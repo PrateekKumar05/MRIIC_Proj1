@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .container-subscription {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .container.text-center {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #343a40;
+        }
+
+        label {
+            color: #343a40;
+        }
+
+        input[type="email"] {
+            background-color: #f1f3f5;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .btn-subscription {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .btn-subscription:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('https://e0.pxfuel.com/wallpapers/498/967/desktop-wallpaper-reading-books-books-old-books.jpg'); background-size: cover;">
+    {% include 'myblogs/Navbar.html' %}
+    <div class="container text-center">
+        <div class='container-subscription w-50 m-auto'>
+            <h1 class="display-6 text-black">Welcome to Subscription Page</h1>
+            {% if feedback %}
+            <div class="alert alert-success mt-2">{{ feedback }}</div>
+            {% endif %}
+            <form method="POST" action=''>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="u_email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="u_email" name='u_email' aria-describedby="emailHelp"
+                        required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class='btn-group d-flex justify-content-center mb-3'>
+                    <input type="radio" class="btn-check" id="Free" autocomplete="off" name="u_membership" value="Free"
+                        checked>
+                    <label class="btn btn-outline-danger" for="Free">Free</label>
+                    <input type="radio" class="btn-check" id="Silver" autocomplete="off" name="u_membership"
+                        value="Silver">
+                    <label class="btn btn-outline-dark" for="Silver">Silver</label>
+                    <input type="radio" class="btn-check" id="Gold" autocomplete="off" name="u_membership" value="Gold">
+                    <label class="btn btn-outline-warning" for="Gold">Gold</label>
+                    <input type="radio" class="btn-check" id="Platinum" autocomplete="off" name="u_membership"
+                        value="Platinum">
+                    <label class="btn btn-outline-primary" for="Platinum">Platinum</label>
+                </div>
+                <button class="btn btn-danger btn-outline-bg-danger" type="submit"
+                    class="btn btn-subscription">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
