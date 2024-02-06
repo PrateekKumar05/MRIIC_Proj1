@@ -61,7 +61,7 @@
         </form>
         <form action="{% url 'signupuser' %}" method="get">
           {% csrf_token%}
-          <button class="btn btn-primary mt-2" type="submit">Signup User</button>
+          <button class="btn btn-primary" type="submit">Signup User</button>
         </form>
         {% endif %}
         <form class="d-flex px-2" role="search" method="post" action="{% url 'findproduct' %}">
