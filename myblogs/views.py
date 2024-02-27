@@ -62,6 +62,7 @@ def subscription(request):
             print(membership)
             return render(request, 'myblogs/subscription.html', {'feedback' : "Thanks for Subscribing!!"})
     
+@login_required(login_url='loginuser')
 def blog(request):
     x = blog_post_form()
     if request.method == "GET":
@@ -129,7 +130,7 @@ def signupuser(request):
                     return redirect('home')
             else:
                 return render(request, 'myblogs/signupuser.html', {'form':UserCreationForm(), 'error':'Password Mismatch Try Again'})
-        
+       
 def logoutuser(request):
     if request.method == 'GET':
         logout(request)
